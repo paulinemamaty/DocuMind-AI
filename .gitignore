@@ -171,6 +171,7 @@ yarn-error.log*
 *.swp
 *.swo
 .DS_Store
+.cursor/
 
 # Debug
 pids
