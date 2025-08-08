@@ -137,3 +137,73 @@ dist
 # Vite logs files
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+
+# Dependencies
+node_modules/
+.pnp/
+.pnp.js
+
+# Testing
+coverage/
+.nyc_output/
+
+# Next.js
+.next/
+out/
+build/
+dist/
+
+# Production
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment files - CRITICAL!
+.env
+.env.local
+.env.production
+.env*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# Debug
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Credentials - SUPER CRITICAL!
+*-credentials.json
+gcp-credentials.json
+serviceAccountKey.json
+*.pem
+*.key
+
+# Supabase
+supabase/.branches
+supabase/.temp
+
+# Vercel
+.vercel
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts
+
+# OS files
+Thumbs.db
+.DS_Store
+
+# Test files
+*.test.js
+*.spec.js
+
+# Temporary files
+tmp/
+temp/
