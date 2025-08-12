@@ -23,7 +23,7 @@ export async function GET(
     // Get document status
     const { data: document, error: docError } = await supabase
       .from('documents')
-      .select('id, status, processing_error, processing_attempts, metadata')
+      .select('id, status, metadata')
       .eq('id', documentId)
       .eq('user_id', user.id)
       .single()
@@ -50,8 +50,6 @@ export async function GET(
     return NextResponse.json({
       id: document.id,
       status: status,
-      error: document.processing_error,
-      attempts: document.processing_attempts,
       fieldCount: fieldCount || 0,
       metadata: document.metadata
     })

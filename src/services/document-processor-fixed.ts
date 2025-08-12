@@ -83,8 +83,7 @@ export async function processDocumentWithAI(input: ProcessDocumentInput): Promis
     const { error: updateError } = await supabase
       .from('documents')
       .update({ 
-        status: 'processing',
-        processing_attempts: 1 
+        status: 'processing'
       })
       .eq('id', input.documentId)
 
@@ -220,7 +219,6 @@ export async function processDocumentWithAI(input: ProcessDocumentInput): Promis
       .from('documents')
       .update({ 
         status: 'completed',
-        processing_error: null,
         metadata: {
           processingTime,
           textLength: result.text?.length || 0,
@@ -248,7 +246,6 @@ export async function processDocumentWithAI(input: ProcessDocumentInput): Promis
       .from('documents')
       .update({ 
         status: 'failed',
-        processing_error: errorMessage,
         metadata: {
           error: errorMessage,
           failedAt: new Date().toISOString()

@@ -82,8 +82,6 @@ export interface Database {
           file_size: number
           mime_type: string
           status: 'pending' | 'processing' | 'completed' | 'failed'
-          processing_error: string | null
-          processing_attempts: number
           metadata: Json | null
           created_at: string
           updated_at: string
@@ -96,8 +94,6 @@ export interface Database {
           file_size: number
           mime_type: string
           status?: 'pending' | 'processing' | 'completed' | 'failed'
-          processing_error?: string | null
-          processing_attempts?: number
           metadata?: Json | null
           created_at?: string
           updated_at?: string
@@ -110,8 +106,6 @@ export interface Database {
           file_size?: number
           mime_type?: string
           status?: 'pending' | 'processing' | 'completed' | 'failed'
-          processing_error?: string | null
-          processing_attempts?: number
           metadata?: Json | null
           created_at?: string
           updated_at?: string

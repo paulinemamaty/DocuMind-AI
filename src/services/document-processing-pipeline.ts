@@ -199,7 +199,7 @@ export class DocumentProcessingPipeline {
       console.error(`❌ [${documentId}] Processing failed:`, error)
       
       // Update status to failed
-      await this.updateDocumentStatus(documentId, 'failed', error.message)
+      await this.updateDocumentStatus(documentId, 'failed')
       
       // Clean up from queue
       this.processingQueue.delete(documentId)
@@ -309,8 +309,7 @@ export class DocumentProcessingPipeline {
    */
   private async updateDocumentStatus(
     documentId: string,
-    status: string,
-    error?: string
+    status: string
   ): Promise<void> {
     const supabase = createClient()
     
@@ -319,10 +318,7 @@ export class DocumentProcessingPipeline {
       updated_at: new Date().toISOString()
     }
 
-    if (error) {
-      update.processing_error = error
-      update.processing_attempts = (await this.getProcessingAttempts(documentId)) + 1
-    }
+    // Error handling removed - using status field only
 
     await supabase
       .from('documents')
@@ -330,20 +326,6 @@ export class DocumentProcessingPipeline {
       .eq('id', documentId)
   }
 
-  /**
-   * Get current processing attempts
-   */
-  private async getProcessingAttempts(documentId: string): Promise<number> {
-    const supabase = createClient()
-    
-    const { data } = await supabase
-      .from('documents')
-      .select('processing_attempts')
-      .eq('id', documentId)
-      .single()
-
-    return data?.processing_attempts || 0
-  }
 
   /**
    * Send webhook notification

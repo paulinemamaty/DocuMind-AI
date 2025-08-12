@@ -22,8 +22,6 @@ interface ProcessingStatusProps {
 interface DocumentStatus {
   id: string
   status: 'pending' | 'processing' | 'completed' | 'failed'
-  processing_error?: string
-  processing_attempts?: number
   created_at: string
   updated_at: string
 }
@@ -255,15 +253,6 @@ export function ProcessingStatus({ documentId, onStatusChange }: ProcessingStatu
         </div>
       )}
 
-      {/* Error Message */}
-      {document.processing_error && (
-        <div className="pt-2 border-t">
-          <div className="flex items-start gap-2 text-sm text-red-600">
-            <AlertCircle className="h-4 w-4 mt-0.5" />
-            <span>{document.processing_error}</span>
-          </div>
-        </div>
-      )}
 
       {/* Timing Info */}
       {document.status === 'completed' && queueStatus?.completed_at && (

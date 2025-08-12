@@ -274,7 +274,6 @@ export function DocumentWorkspaceRedesigned({ documentId }: DocumentWorkspaceRed
       // Check column names
       console.log('\n📋 Column Check:');
       console.log('   Has "status":', doc.hasOwnProperty('status') ? '✅' : '❌');
-      console.log('   Has "processing_status":', doc.hasOwnProperty('processing_status') ? '⚠️ OLD COLUMN' : '✅ Correct');
       
       setDocument(doc)
       setDebugInfo(prev => ({ ...prev, supabaseResponse: doc }))
