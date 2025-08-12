@@ -1,0 +1,242 @@
+/* High Contrast Mode */
+.high-contrast {
+  --background: 0 0% 100%;
+  --foreground: 0 0% 0%;
+  --card: 0 0% 100%;
+  --card-foreground: 0 0% 0%;
+  --primary: 0 0% 0%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 0 0% 95%;
+  --secondary-foreground: 0 0% 0%;
+  --muted: 0 0% 90%;
+  --muted-foreground: 0 0% 0%;
+  --border: 0 0% 0%;
+}
+
+.high-contrast * {
+  border-color: currentColor !important;
+  outline: 2px solid transparent;
+}
+
+.high-contrast button,
+.high-contrast input,
+.high-contrast textarea,
+.high-contrast select {
+  border: 2px solid currentColor !important;
+}
+
+.high-contrast a {
+  text-decoration: underline !important;
+  font-weight: bold;
+}
+
+/* Focus Mode */
+.focus-mode *:not(:focus):not(:hover) {
+  opacity: 0.7;
+}
+
+.focus-mode *:focus {
+  outline: 3px solid #2563eb !important;
+  outline-offset: 2px !important;
+  opacity: 1 !important;
+}
+
+/* Reduced Motion */
+.reduce-motion * {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
+
+/* Screen Reader Only */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Skip to Content Link */
+.skip-to-content {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: #000;
+  color: #fff;
+  padding: 8px;
+  text-decoration: none;
+  z-index: 100;
+}
+
+.skip-to-content:focus {
+  top: 0;
+}
+
+/* Keyboard Navigation Indicators */
+.keyboard-navigable:focus {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}
+
+/* Large Click Targets */
+.accessible-target {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* Color Blind Friendly Palette */
+.colorblind-friendly {
+  --success: 120 100% 25%;
+  --warning: 45 100% 35%;
+  --error: 0 85% 40%;
+  --info: 200 100% 35%;
+}
+
+/* Enhanced Form Labels */
+.enhanced-label {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.enhanced-label .required {
+  color: #dc2626;
+  margin-left: 0.25rem;
+}
+
+/* Voice Input Indicator */
+.voice-input-active {
+  position: relative;
+}
+
+.voice-input-active::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  width: 12px;
+  height: 12px;
+  background: #ef4444;
+  border-radius: 50%;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Improved Focus Indicators */
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}
+
+/* High Contrast Focus */
+.high-contrast input:focus-visible,
+.high-contrast textarea:focus-visible,
+.high-contrast select:focus-visible,
+.high-contrast button:focus-visible,
+.high-contrast a:focus-visible {
+  outline: 3px solid currentColor;
+  outline-offset: 2px;
+}
+
+/* Error States */
+.field-error {
+  border-color: #dc2626 !important;
+  background-color: #fef2f2;
+}
+
+.field-error:focus {
+  outline-color: #dc2626;
+}
+
+.error-message {
+  color: #dc2626;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+/* Success States */
+.field-success {
+  border-color: #16a34a !important;
+  background-color: #f0fdf4;
+}
+
+.field-success:focus {
+  outline-color: #16a34a;
+}
+
+/* Loading States */
+.field-loading {
+  position: relative;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+.field-loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  border: 2px solid #e5e7eb;
+  border-top-color: #3b82f6;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: translateY(-50%) rotate(360deg);
+  }
+}
+
+/* Touch Target Sizing */
+@media (pointer: coarse) {
+  button,
+  input,
+  textarea,
+  select,
+  a {
+    min-height: 44px;
+    padding: 12px;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  .print-only {
+    display: block !important;
+  }
+  
+  * {
+    background: white !important;
+    color: black !important;
+  }
+}

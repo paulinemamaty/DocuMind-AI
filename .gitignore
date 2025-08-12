@@ -183,6 +183,7 @@ pids
 *-credentials.json
 gcp-credentials.json
 serviceAccountKey.json
+service-account-key.json
 *.pem
 *.key
 

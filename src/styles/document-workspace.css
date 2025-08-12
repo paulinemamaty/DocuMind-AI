@@ -1,0 +1,232 @@
+/* Document Workspace Styles */
+
+/* Glassmorphism Effects */
+.glassmorphism {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.glassmorphism-light {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Field Overlay Animations */
+@keyframes field-glow {
+  0% {
+    box-shadow: 0 0 10px rgba(0, 102, 204, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(0, 102, 204, 0.5), 0 0 30px rgba(0, 102, 204, 0.3);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(0, 102, 204, 0.3);
+  }
+}
+
+.field-overlay-glow {
+  animation: field-glow 2s ease-in-out infinite;
+}
+
+.field-overlay-focused {
+  box-shadow: 
+    0 0 0 3px rgba(0, 102, 204, 0.1),
+    0 0 20px rgba(0, 102, 204, 0.4),
+    inset 0 0 10px rgba(0, 102, 204, 0.1);
+}
+
+.field-overlay-error {
+  box-shadow: 
+    0 0 0 2px rgba(239, 68, 68, 0.1),
+    0 0 10px rgba(239, 68, 68, 0.3);
+}
+
+.field-overlay-success {
+  box-shadow: 
+    0 0 0 2px rgba(16, 185, 129, 0.1),
+    0 0 10px rgba(16, 185, 129, 0.3);
+}
+
+/* Floating Labels */
+.floating-label {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.floating-label-active {
+  transform: translateY(-24px) scale(0.85);
+  color: #0066CC;
+}
+
+/* Touch Optimizations */
+@media (pointer: coarse) {
+  .touch-target {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  .field-input-touch {
+    min-height: 48px;
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 640px) {
+  /* Mobile */
+  .document-header {
+    flex-direction: column;
+    height: auto;
+    padding: 8px;
+  }
+  
+  .floating-panel {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    max-height: 60vh;
+    border-radius: 20px 20px 0 0;
+  }
+  
+  .sidebar-left,
+  .sidebar-right {
+    display: none;
+  }
+  
+  .mobile-bottom-nav {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: white;
+    border-top: 1px solid #e5e7eb;
+    padding: 8px;
+    z-index: 40;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  /* Tablet */
+  .document-workspace {
+    grid-template-columns: 60px 1fr;
+  }
+  
+  .sidebar-left {
+    width: 60px;
+  }
+  
+  .sidebar-right {
+    position: absolute;
+    right: 0;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+  }
+  
+  .sidebar-right.open {
+    transform: translateX(0);
+  }
+}
+
+@media (min-width: 1025px) {
+  /* Desktop */
+  .document-workspace {
+    grid-template-columns: 240px 1fr 360px;
+  }
+}
+
+/* Pinch to Zoom */
+.zoomable {
+  touch-action: pinch-zoom;
+}
+
+/* Swipe Gestures */
+.swipeable {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.swipe-left {
+  transform: translateX(-100%);
+}
+
+.swipe-right {
+  transform: translateX(100%);
+}
+
+/* Smooth Scrolling */
+.smooth-scroll {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Focus Styles */
+.focus-ring {
+  outline: none;
+  ring: 2px;
+  ring-color: #0066CC;
+  ring-offset: 2px;
+}
+
+/* Loading Animations */
+@keyframes pulse-blue {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-pulse-blue {
+  animation: pulse-blue 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Progress Indicators */
+.progress-ring {
+  stroke-dasharray: 251.2;
+  stroke-dashoffset: 0;
+  transform: rotate(-90deg);
+  transform-origin: center;
+  transition: stroke-dashoffset 0.5s ease;
+}
+
+/* Hover Effects */
+.hover-lift {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  .glassmorphism {
+    background: rgba(0, 0, 0, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .glassmorphism-light {
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+}
+
+/* Print Styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  .document-content {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+}
